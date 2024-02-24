@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+
+    <title>{% block title %}{% endblock %}Live Chat APP</title>
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-white">
+    <section class="bg-gray-50 dark:bg-gray-900 flex flex-col justify-center h-screen">
+        <nav class="flex items-center justify-between px-4 py-6 bg-teal-800 fixed top-0 w-full">
+            <div>
+                <a href="/" class="text-xl text-white flex items-center gap-3">
+                    <img src="{% static 'images/logo.png' %}" alt="logo" class="w-10 h-10">
+                    <span>Django Live Chat</span>
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input class="sr-only peer" value="" type="checkbox" />
+                    <div id="dark-Mode"
+                        class="w-24 h-10 rounded-full ring-0 peer duration-500 outline-none bg-gray-200 overflow-hidden before:flex before:items-center before:justify-center after:flex after:items-center after:justify-center before:content-['☀️'] before:absolute before:h-8 before:w-8 before:top-1/2 before:bg-[#1d1d1d] before:rounded-full before:left-1 before:-translate-y-1/2 before:transition-all before:duration-700 peer-checked:before:opacity-0 peer-checked:before:rotate-90 peer-checked:before:-translate-y-full  peer-checked:bg-[#383838] after:content-['🌑'] after:absolute after:bg-white after:rounded-full after:top-[4px] after:right-1 after:translate-y-full after:w-8 after:h-8 after:opacity-0 after:transition-all after:duration-700 peer-checked:after:opacity-100 peer-checked:after:rotate-180 peer-checked:after:translate-y-0">
+                    </div>
+                </label>
+
+                {% if request.user.is_authenticated %}
+                <a href="/rooms/" class="text-white hover:text-teal-100">
+                    <button class="bg-gray-500 rounded-xl">
+                        <span class="span-mother">
+                            <span>R</span>
+                            <span>o</span>
+                            <span>o</span>
+                            <span>m</span>
+                            <span>s</span>
+                        </span>
+                        <span class="span-mother2">
+                            <span>R</span>
+                            <span>o</span>
+                            <span>o</span>
+                            <span>m</span>
+                            <span>s</span>
+                        </span>
+
+                    </button>
+
+                </a>
+
+
+                <a href="{% url 'logout' %}" class="text-white hover:text-teal-100">
+                    <button class="bg-gray-500 rounded-xl">
+                        <span class="span-mother">
+                            <span>L</span>
+                            <span>o</span>
+                            <span>g</span>
+                            <span>O</span>
+                            <span>u</span>
+                            <span>t</span>
+                        </span>
+                        <span class="span-mother2">
+                            <span>L</span>
+                            <span>o</span>
+                            <span>g</span>
+                            <span>O</span>
+                            <span>u</span>
+                            <span>t</span>
+                        </span>
+
+                    </button>
+
+                </a>
+
+                {% else %}
+                <a href="{% url 'login' %}" class="text-white hover:text-teal-100">
+                    <button class="bg-gray-500 rounded-xl">
+                        <span class="span-mother">
+                            <span>L</span>
+                            <span>o</span>
+                            <span>g</span>
+                            <span>i</span>
+                            <span>n</span>
+                        </span>
+                        <span class="span-mother2">
+                            <span>L</span>
+                            <span>o</span>
+                            <span>g</span>
+                            <span>i</span>
+                            <span>n</span>
+                        </span>
+
+                    </button>
+
+                </a>
+
+
+                <a href="{% url 'signup' %}" class="text-white hover:text-teal-100">
+                    <button class="bg-gray-500 rounded-xl">
+                        <span class="span-mother">
+                            <span>S</span>
+                            <span>i</span>
+                            <span>g</span>
+                            <span>n</span>
+                            <span>U</span>
+                            <span>p</span>
+                        </span>
+                        <span class="span-mother2">
+                            <span>S</span>
+                            <span>i</span>
+                            <span>g</span>
+                            <span>n</span>
+                            <span>U</span>
+                            <span>p</span>
+                        </span>
+
+                    </button>
+
+                </a>
+
+                {% endif %}
+            </div>
+        </nav>
+
+        {% block content %}
+        {% endblock %}
+
+    </section>
+    <script src="{% static 'js/darkmode.js'%}"></script>
+    <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
+</body>
+</html>
