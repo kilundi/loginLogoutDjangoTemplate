@@ -1,4 +1,4 @@
-{% load static %}
+{% load static tailwind_tags %}
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
 
     <title>{% block title %}{% endblock %}Live Chat APP</title>
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    {% tailwind_css %}
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 text-white">
@@ -19,7 +19,7 @@
             <div>
                 <a href="/" class="text-xl text-white flex items-center gap-3">
                     <img src="{% static 'images/logo.png' %}" alt="logo" class="w-10 h-10">
-                    <span>Django Live Chat</span>
+                    <span>Live Chat</span>
                 </a>
             </div>
 
